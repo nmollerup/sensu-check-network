@@ -1,0 +1,208 @@
+version: 2
+
+project_name: "sensu-check-network"
+
+builds:
+  - main: ./cmd/check-banner/main.go
+    id: "check-banner"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/check-banner
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/check-mtu/main.go
+    id: "check-mtu"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/check-mtu
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/check-netfilter-conntrack/main.go
+    id: "check-netfilter-conntrack"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/check-netfilter-conntrack
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/check-netstat-tcp/main.go
+    id: "check-netstat-tcp"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/check-netstat-tcp
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/check-ping/main.go
+    id: "check-ping"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/check-ping
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/check-ports/main.go
+    id: "check-ports"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/check-ports
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/check-ports-bind/main.go
+    id: "check-ports-bind"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/check-ports-bind
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/metrics-interface/main.go
+    id: "metrics-interface"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/metrics-interface
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/metrics-net/main.go
+    id: "metrics-net"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/metrics-net
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/metrics-netstat-tcp/main.go
+    id: "metrics-netstat-tcp"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/metrics-netstat-tcp
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/metrics-ping/main.go
+    id: "metrics-ping"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/metrics-ping
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/metrics-sockstat/main.go
+    id: "metrics-sockstat"
+    env:
+      - CGO_ENABLED=0
+    ldflags: '-s -w'
+    binary: bin/metrics-sockstat
+    targets:
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+checksum:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_sha512-checksums.txt"
+  algorithm: sha512
+
+archives:
+  - id: tar
+    formats: ['tar.gz']
+    files:
+      - LICENSE
+      - README.md
+      - CHANGELOG.md
