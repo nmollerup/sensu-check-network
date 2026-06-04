@@ -106,7 +106,7 @@ func expandPorts(raw string) ([]int, error) {
 }
 
 func checkPort(host string, port int, proto string, timeout time.Duration) error {
-	addr := fmt.Sprintf("%s:%d", host, port)
+	addr := net.JoinHostPort(host, fmt.Sprintf("%d", port))
 	conn, err := net.DialTimeout(proto, addr, timeout)
 	if err != nil {
 		return err

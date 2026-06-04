@@ -139,19 +139,22 @@ func checkArgs(_ *corev2.Event) (int, error) {
 }
 
 func openConn(host string) (net.Conn, error) {
-	addr := fmt.Sprintf("%s:%d", host, plugin.Port)
+	addr := net.JoinHostPort(host, fmt.Sprintf("%d", plugin.Port))
 	timeout := time.Duration(plugin.Timeout) * time.Second
 
 	tcpConn, err := net.DialTimeout("tcp", addr, timeout)
 	if err != nil {
 		return nil, err
 	}
-	tcpConn.SetDeadline(time.Now().Add(timeout))
+	if err := tcpConn.SetDeadline(time.Now().Add(timeout)); err != nil {
+		_ = tcpConn.Close()
+		return nil, err
+	}
 
 	if plugin.SSL {
 		tlsConn := tls.Client(tcpConn, &tls.Config{InsecureSkipVerify: true}) //nolint:gosec
 		if err := tlsConn.Handshake(); err != nil {
-			tcpConn.Close()
+			_ = tcpConn.Close()
 			return nil, fmt.Errorf("TLS handshake failed: %v", err)
 		}
 		return tlsConn, nil
@@ -164,7 +167,7 @@ func acquireBanner(host string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 
 	if plugin.Write != "" {
 		msg := plugin.Write
@@ -218,7 +221,7 @@ func executeCheck(_ *corev2.Event) (int, error) {
 			if err != nil {
 				return sensu.CheckStateCritical, critMsg(fmt.Sprintf("connection failed for %s:%d: %v", host, plugin.Port, err))
 			}
-			conn.Close()
+			_ = conn.Close()
 			successCount++
 		} else {
 			banner, err := acquireBanner(host)

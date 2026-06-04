@@ -167,12 +167,12 @@ func expandPortRange(raw string) ([]int, error) {
 }
 
 func dialPort(pb portBind, timeout time.Duration) error {
-	addr := fmt.Sprintf("%s:%d", pb.address, pb.port)
+	addr := net.JoinHostPort(pb.address, fmt.Sprintf("%d", pb.port))
 	conn, err := net.DialTimeout(pb.protocol, addr, timeout)
 	if err != nil {
 		return err
 	}
-	conn.Close()
+	_ = conn.Close()
 	return nil
 }
 

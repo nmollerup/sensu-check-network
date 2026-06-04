@@ -110,7 +110,7 @@ func parseStates(proto string, pattern *regexp.Regexp, counts map[string]int) {
 	if err != nil {
 		return
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {

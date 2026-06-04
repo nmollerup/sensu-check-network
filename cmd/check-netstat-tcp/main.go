@@ -126,7 +126,7 @@ func countTCPStates(protocols []string, wantStates []string, port int) map[strin
 			}
 			counts[stateName]++
 		}
-		f.Close()
+		_ = f.Close()
 	}
 	return counts
 }
