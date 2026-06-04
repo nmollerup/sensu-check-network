@@ -111,8 +111,7 @@ func checkPort(host string, port int, proto string, timeout time.Duration) error
 	if err != nil {
 		return err
 	}
-	conn.Close()
-	return nil
+	return conn.Close()
 }
 
 func executeCheck(_ *corev2.Event) (int, error) {
