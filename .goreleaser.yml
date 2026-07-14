@@ -7,7 +7,7 @@ builds:
     id: "check-banner"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/check-banner
     targets:
       - linux_386
@@ -23,7 +23,7 @@ builds:
     id: "check-mtu"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/check-mtu
     targets:
       - linux_386
@@ -39,7 +39,7 @@ builds:
     id: "check-netfilter-conntrack"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/check-netfilter-conntrack
     targets:
       - linux_386
@@ -55,7 +55,7 @@ builds:
     id: "check-netstat-tcp"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/check-netstat-tcp
     targets:
       - linux_386
@@ -71,7 +71,7 @@ builds:
     id: "check-ping"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/check-ping
     targets:
       - linux_386
@@ -87,7 +87,7 @@ builds:
     id: "check-ports"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/check-ports
     targets:
       - linux_386
@@ -103,7 +103,7 @@ builds:
     id: "check-ports-bind"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/check-ports-bind
     targets:
       - linux_386
@@ -119,7 +119,7 @@ builds:
     id: "metrics-interface"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/metrics-interface
     targets:
       - linux_386
@@ -135,7 +135,7 @@ builds:
     id: "metrics-net"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/metrics-net
     targets:
       - linux_386
@@ -151,7 +151,7 @@ builds:
     id: "metrics-netstat-tcp"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/metrics-netstat-tcp
     targets:
       - linux_386
@@ -167,7 +167,7 @@ builds:
     id: "metrics-ping"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/metrics-ping
     targets:
       - linux_386
@@ -183,7 +183,7 @@ builds:
     id: "metrics-sockstat"
     env:
       - CGO_ENABLED=0
-    ldflags: '-s -w'
+    ldflags: '-s -w -X github.com/sensu/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu/sensu-plugin-sdk/version.date={{.Date}}'
     binary: bin/metrics-sockstat
     targets:
       - linux_386
